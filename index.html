@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Feliz cumpleaños, Dennis 🌸</title>
+  <meta name="theme-color" content="#f8d9df">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Cielo: día → atardecer → noche -->
+  <div id="cielo" aria-hidden="true">
+    <div class="capa dia"></div>
+    <div class="capa atardecer"></div>
+    <div class="sol"></div>
+    <div class="capa noche"></div>
+  </div>
+  <canvas id="estrellas" aria-hidden="true"></canvas>
+  <div id="corazones" aria-hidden="true"></div>
+  <div id="jardin" aria-hidden="true"></div>
+
+  <!-- 1. Candado -->
+  <section class="escena on" id="s-pin">
+    <div class="tarjeta">
+      <div class="candado">🔒</div>
+      <h1>Esto es solo para ti</h1>
+      <p class="suave">Ingresa el día y mes de tu cumpleaños</p>
+      <div class="pin-cajas" id="pinCajas"><span></span><span></span><span></span><span></span></div>
+      <div class="teclado" id="teclado">
+        <button>1</button><button>2</button><button>3</button>
+        <button>4</button><button>5</button><button>6</button>
+        <button>7</button><button>8</button><button>9</button>
+        <button data-k="borrar" aria-label="Borrar">⌫</button><button>0</button><span></span>
+      </div>
+      <p class="pista">Pista: DDMM 💌</p>
+    </div>
+  </section>
+
+  <!-- 2. Sobre -->
+  <section class="escena" id="s-sobre">
+    <div class="sobre-wrap">
+      <div class="sobre" id="sobre">
+        <div class="carta-mini">
+          <p class="script">Feliz cumpleaños,</p>
+          <h2 class="nombre-carta">Dennis</h2>
+          <p>Hoy cumples <b>23</b> y preparé algo solo para ti.</p>
+          <button class="btn" id="btnSorpresa">¿Lista? Toca aquí →</button>
+        </div>
+        <div class="sobre-frente"></div>
+        <div class="sobre-solapa"></div>
+        <button class="sello" id="sello" aria-label="Abrir el sobre">D</button>
+      </div>
+      <p class="suave" id="toqueSello">Toca el sello ✨</p>
+    </div>
+  </section>
+
+  <!-- 3. Pastel -->
+  <section class="escena" id="s-pastel">
+    <div class="pastel-wrap">
+      <h2 id="pastelTitulo">Pide un deseo… 🌬️</h2>
+      <p class="suave" id="pastelTexto">Sopla al micrófono o toca las velas para apagarlas</p>
+      <div class="pastel" id="pastel">
+        <div class="velas" id="velas"></div>
+        <div class="piso arriba"></div>
+        <div class="piso abajo"></div>
+        <div class="plato"></div>
+        <div class="numero">23</div>
+      </div>
+      <button class="btn" id="btnMic">🎤 Soplar con el micrófono</button>
+    </div>
+  </section>
+
+  <!-- 4. Gerberas → atardecer → estrellas -->
+  <section class="escena" id="s-cielo">
+    <p class="narra" id="narra"></p>
+    <div class="abajo-centro">
+      <p class="sub" id="sub"></p>
+      <button class="btn btn-noche oculto" id="btnFotos">Mira lo que guardan las estrellas ✨</button>
+    </div>
+  </section>
+
+  <!-- 5. Fotos en el cielo -->
+  <section class="escena" id="s-fotos">
+    <div class="fotos-wrap">
+      <button class="flecha izq" data-dir="-1" aria-label="Anterior">‹</button>
+      <div class="carrusel" id="carrusel"></div>
+      <button class="flecha der" data-dir="1" aria-label="Siguiente">›</button>
+    </div>
+    <div class="abajo-centro">
+      <button class="btn btn-noche" id="btnCarta">Una última cosa… 💌</button>
+    </div>
+  </section>
+
+  <!-- 6. Carta -->
+  <section class="escena" id="s-carta">
+    <article class="papel" id="papel">
+      <p class="carta-texto" id="cartaTexto"></p>
+      <p class="firma oculto" id="firma"></p>
+    </article>
+    <button class="btn btn-noche oculto" id="btnOtraVez">Ver de nuevo ↺</button>
+  </section>
+
+  <canvas id="confeti" aria-hidden="true"></canvas>
+  <button id="btnMusica" class="oculto" aria-label="Silenciar música">🔊</button>
+
+  <audio id="musica1" loop preload="auto"></audio>
+  <audio id="musica2" loop preload="auto"></audio>
+  <script src="main.js"></script>
+</body>
+</html>
